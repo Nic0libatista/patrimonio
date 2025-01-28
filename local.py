@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QMessageBox
 import sys
 
 class local(QWidget):
@@ -112,18 +112,22 @@ class local(QWidget):
       
 
     def cadastrar(self):
-        # print(self.edit_nome.text())
-        #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
-        arquivo = open("clientes.txt","+a",encoding="utf8")
-        arquivo.write(f"id: {self.edit_id.text()} \n")
-        arquivo.write(f"empresa: {self.edit_empresa.text()} \n")
-        arquivo.write(f"nome do patrimonio: {self.edit_logradouro.text()} \n")
-        arquivo.write(f"tipo: {self.edit_numero.text()} \n")
-        arquivo.write(f"descricao: {self.edit_predio.text()} \n")
-        arquivo.write(f"localizacao: {self.edit_andar.text()} \n")
-        arquivo.write(f"data de fabricacao: {self.edit_sala.text()} \n")
-        arquivo.write("------------------------------------------------------------------------------------------\n")
-        arquivo.close()
+        if (self.edit_id.text()=="" or self.edit_empresa.text()=="" or self.edit_logradouro.text()=="" or self.edit_numero.text()=="" or self.edit_predio.text()=="" or self.edit_andar.text()=="" or self.edit_sala.text()==""):
+            QMessageBox.critical(self,"erro","Você deve preencher todos os campos")
+        else:
+            # print(self.edit_nome.text())
+            #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
+            arquivo = open("local.txt","+a",encoding="utf8")
+            arquivo.write(f"id: {self.edit_id.text()} \n")
+            arquivo.write(f"empresa: {self.edit_empresa.text()} \n")
+            arquivo.write(f"nome do patrimonio: {self.edit_logradouro.text()} \n")
+            arquivo.write(f"tipo: {self.edit_numero.text()} \n")
+            arquivo.write(f"descricao: {self.edit_predio.text()} \n")
+            arquivo.write(f"localizacao: {self.edit_andar.text()} \n")
+            arquivo.write(f"data de fabricacao: {self.edit_sala.text()} \n")
+            arquivo.write("------------------------------------------------------------------------------------------\n")
+            arquivo.close()
+            QMessageBox.information(self,"Cadastrado com sucesso","Os dados da localização foram salvos")
 
 #app = QApplication(sys.argv)
 # NSTANCIA DA CLASSE CADASTROCLIENTE PARA INICIAR A JANELA

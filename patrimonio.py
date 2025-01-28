@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout, QMessageBox
 import sys
 
 class patrimonio(QWidget):
@@ -117,21 +117,26 @@ class patrimonio(QWidget):
         # ADICIONAR O LAYOUT V NA TELA
         self.setLayout(self.layout_v)
       
+    
 
     def cadastrar(self):
-        # print(self.edit_nome.text())
-        #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
-        arquivo = open("clientes.txt","+a",encoding="utf8")
-        arquivo.write(f"id: {self.edit_id.text()} \n")
-        arquivo.write(f"numero de série: {self.edit_serie.text()} \n")
-        arquivo.write(f"nome do patrimônio: {self.edit_nome.text()} \n")
-        arquivo.write(f"tipo: {self.edit_tipo.text()} \n")
-        arquivo.write(f"descrição: {self.edit_descricao.text()} \n")
-        arquivo.write(f"localização: {self.edit_local.text()} \n")
-        arquivo.write(f"data de fabricação: {self.edit_fabricacao.text()} \n")
-        arquivo.write(f"data de aquisição: {self.edit_aquisicao.text()} \n")
-        arquivo.write("------------------------------------------------------------------------------------------\n")
-        arquivo.close()
+        if (self.edit_id.text()=="" or self.edit_serie.text()=="" or self.edit_nome.text()=="" or self.edit_tipo.text()=="" or self.edit_descricao.text()=="" or self.edit_local.text()=="" or self.edit_fabricacao.text()=="" or self.edit_aquisicao.text()==""):
+            QMessageBox.critical(self,"erro","Você deve preencher todos os campos")
+        else:
+            # print(self.edit_nome.text())
+            #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
+            arquivo = open("clientes.txt","+a",encoding="utf8")
+            arquivo.write(f"id: {self.edit_id.text()} \n")
+            arquivo.write(f"numero de série: {self.edit_serie.text()} \n")
+            arquivo.write(f"nome do patrimônio: {self.edit_nome.text()} \n")
+            arquivo.write(f"tipo: {self.edit_tipo.text()} \n")
+            arquivo.write(f"descrição: {self.edit_descricao.text()} \n")
+            arquivo.write(f"localização: {self.edit_local.text()} \n")
+            arquivo.write(f"data de fabricação: {self.edit_fabricacao.text()} \n")
+            arquivo.write(f"data de aquisição: {self.edit_aquisicao.text()} \n")
+            arquivo.write("------------------------------------------------------------------------------------------\n")
+            arquivo.close()
+            QMessageBox.information(self,"Cadastrado com sucesso","Os dados do patrimônio foram salvos")
 
 
 #app = QApplication(sys.argv)
