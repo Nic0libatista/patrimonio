@@ -121,23 +121,24 @@ class patrimonio(QWidget):
     def cadastrar(self):
         # print(self.edit_nome.text())
         #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
-        arquivo = open("clientes.txt","+a")
+        arquivo = open("clientes.txt","+a",encoding="utf8")
         arquivo.write(f"id: {self.edit_id.text()} \n")
-        arquivo.write(f"numero de serie: {self.edit_serie.text()} \n")
-        arquivo.write(f"nome do patrimonio: {self.edit_nome.text()} \n")
+        arquivo.write(f"numero de série: {self.edit_serie.text()} \n")
+        arquivo.write(f"nome do patrimônio: {self.edit_nome.text()} \n")
         arquivo.write(f"tipo: {self.edit_tipo.text()} \n")
-        arquivo.write(f"descricao: {self.edit_descricao.text()} \n")
-        arquivo.write(f"localizacao: {self.edit_local.text()} \n")
-        arquivo.write(f"data de fabricacao: {self.edit_fabricacao.text()} \n")
-        arquivo.write(f"data de aquisicao: {self.edit_aquisicao.text()} \n")
+        arquivo.write(f"descrição: {self.edit_descricao.text()} \n")
+        arquivo.write(f"localização: {self.edit_local.text()} \n")
+        arquivo.write(f"data de fabricação: {self.edit_fabricacao.text()} \n")
+        arquivo.write(f"data de aquisição: {self.edit_aquisicao.text()} \n")
         arquivo.write("------------------------------------------------------------------------------------------\n")
         arquivo.close()
 
-app = QApplication(sys.argv)
+
+#app = QApplication(sys.argv)
 # NSTANCIA DA CLASSE CADASTROCLIENTE PARA INICIAR A JANELA
-tela = patrimonio()
+#tela = patrimonio()
 # EXIBIR A TELA DURANTE A EXECUÇÃO
-tela.show()
+#tela.show()
 # AO CLICAR NO BOTAO FECHAR A TELA DEVE FECHAR A JANELA E SAIR DA MEMORIA
-app.exec()
+#app.exec()
 

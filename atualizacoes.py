@@ -79,7 +79,7 @@ class localpatrimonio(QWidget):
     def cadastrar(self):
         # print(self.edit_nome.text())
         #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
-        arquivo = open("clientes.txt","+a")
+        arquivo = open("clientes.txt","+a",encoding="utf8")
         arquivo.write(f"id: {self.edit_id.text()} \n")
         arquivo.write(f"numero de serie: {self.edit_serie.text()} \n")
         arquivo.write(f"data da ultima verificacao: {self.edit_data.text()} \n")

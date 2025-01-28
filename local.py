@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QLineEdit, QPushButton, QVBoxLayout, QHBoxLayout
 import sys
 
-class localpatrimonio(QWidget):
+class local(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -114,7 +114,7 @@ class localpatrimonio(QWidget):
     def cadastrar(self):
         # print(self.edit_nome.text())
         #VAMOS CRIAR UMA VARIÁVEL QUE FARÁ REFERÊNCIA AO ARQUIVO DE TEXTO
-        arquivo = open("clientes.txt","+a")
+        arquivo = open("clientes.txt","+a",encoding="utf8")
         arquivo.write(f"id: {self.edit_id.text()} \n")
         arquivo.write(f"empresa: {self.edit_empresa.text()} \n")
         arquivo.write(f"nome do patrimonio: {self.edit_logradouro.text()} \n")
@@ -125,11 +125,11 @@ class localpatrimonio(QWidget):
         arquivo.write("------------------------------------------------------------------------------------------\n")
         arquivo.close()
 
-app = QApplication(sys.argv)
+#app = QApplication(sys.argv)
 # NSTANCIA DA CLASSE CADASTROCLIENTE PARA INICIAR A JANELA
-tela = localpatrimonio()
+#tela = localpatrimonio()
 # EXIBIR A TELA DURANTE A EXECUÇÃO
-tela.show()
+#tela.show()
 # AO CLICAR NO BOTAO FECHAR A TELA DEVE FECHAR A JANELA E SAIR DA MEMORIA
-app.exec()
+#app.exec()
 
